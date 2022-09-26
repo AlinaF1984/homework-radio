@@ -121,6 +121,31 @@ public class RadioTest {
     }
 
     @Test
+    public void shoudMaxCurrentRadio() {
+        Radio sound = new Radio();
+
+        sound.setCurrentRadioStationNumber(10);
+
+        int expected = 0;
+        int actual = sound.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shoudMinCurrentRadio() {
+        Radio sound = new Radio();
+
+        sound.setCurrentRadioStationNumber(-1);
+
+        int expected = 0;
+        int actual = sound.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+
+    @Test
     public void shoudSoundVolume() {
         Radio sound = new Radio();
 
@@ -171,7 +196,20 @@ public class RadioTest {
     }
 
     @Test
-    public void shoudMaxBorderSoundaVolume() {
+    public void shoudAddNoBorderSoundaVolume() {
+        Radio sound = new Radio();
+        sound.setSoundVolume(11);
+
+        sound.maxVolume();
+
+        int expected = 1;
+        int actual = sound.getSoundVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shoudMaxSoundaVolume() {
         Radio sound = new Radio();
         sound.setSoundVolume(10);
 
@@ -184,7 +222,20 @@ public class RadioTest {
     }
 
     @Test
-    public void shoudMinBorderSoundaVolume() {
+    public void shoudMinNoBorderSoundaVolume() {
+        Radio sound = new Radio();
+        sound.setSoundVolume(-1);
+
+        sound.minVolume();
+
+        int expected = 0;
+        int actual = sound.getSoundVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shoudMinSoundaVolume() {
         Radio sound = new Radio();
         sound.setSoundVolume(0);
 
@@ -199,57 +250,9 @@ public class RadioTest {
     @Test
     public void shoudReduceSoundVolume() {
         Radio sound = new Radio();
-        sound.setSoundVolume(3);
+        sound.setSoundVolume(1);
 
         sound.minVolume();
-
-        int expected = 2;
-        int actual = sound.getSoundVolume();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shoudMinCurrentRadio() {
-        Radio sound = new Radio();
-
-        sound.setCurrentRadioStationNumber(-1);
-
-        int expected = 0;
-        int actual = sound.getCurrentRadioStationNumber();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shoudMaxCurrentRadio() {
-        Radio sound = new Radio();
-
-        sound.setCurrentRadioStationNumber(10);
-
-        int expected = 0;
-        int actual = sound.getCurrentRadioStationNumber();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shoudMaxSoundVolume() {
-        Radio sound = new Radio();
-
-        sound.setSoundVolume(11);
-
-        int expected = 0;
-        int actual = sound.getSoundVolume();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shoudMinSoundVolume() {
-        Radio sound = new Radio();
-
-        sound.setSoundVolume(-1);
 
         int expected = 0;
         int actual = sound.getSoundVolume();
