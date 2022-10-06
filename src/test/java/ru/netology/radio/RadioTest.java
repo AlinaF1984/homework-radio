@@ -7,6 +7,19 @@ import org.junit.jupiter.api.Test;
 public class RadioTest {
 
     @Test
+    public void Radio() {
+        Radio sound = new Radio();
+
+        Assertions.assertEquals(9, sound.getMaxRadioStationNumber());
+        Assertions.assertEquals(0, sound.getMinRadioStationNumber());
+        Assertions.assertEquals(0, sound.getMinSoundVolume());
+        Assertions.assertEquals(100, sound.getMaxSoundVolume());
+        Assertions.assertEquals(0, sound.getCurrentRadioStationNumber());
+        Assertions.assertEquals(0, sound.getSoundVolume());
+    }
+
+
+    @Test
     public void shoudCurrentRadio() {
         Radio sound = new Radio();
 
@@ -124,7 +137,7 @@ public class RadioTest {
     public void shoudMaxCurrentRadio() {
         Radio sound = new Radio();
 
-        sound.setCurrentRadioStationNumber(10);
+        sound.setCurrentRadioStationNumber(11);
 
         int expected = 0;
         int actual = sound.getCurrentRadioStationNumber();
@@ -163,7 +176,7 @@ public class RadioTest {
 
         sound.setMaxSoundVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = sound.getSoundVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -198,7 +211,7 @@ public class RadioTest {
     @Test
     public void shoudAddNoBorderSoundaVolume() {
         Radio sound = new Radio();
-        sound.setSoundVolume(11);
+        sound.setSoundVolume(101);
 
         sound.maxVolume();
 
@@ -211,11 +224,11 @@ public class RadioTest {
     @Test
     public void shoudMaxSoundaVolume() {
         Radio sound = new Radio();
-        sound.setSoundVolume(10);
+        sound.setSoundVolume(100);
 
         sound.maxVolume();
 
-        int expected = 10;
+        int expected = 100;
         int actual = sound.getSoundVolume();
 
         Assertions.assertEquals(expected, actual);
@@ -260,4 +273,14 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void radioTest() {
+        Radio sound = new Radio(10);
+
+        sound.setCurrentRadioStationNumber(9);
+        int expected = 9;
+        int actual = sound.getCurrentRadioStationNumber();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
