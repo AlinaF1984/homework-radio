@@ -19,7 +19,6 @@ public class RadioTest {
     }
 
 
-
     @Test
     public void shoudCurrentRadio() {
         Radio sound = new Radio();
